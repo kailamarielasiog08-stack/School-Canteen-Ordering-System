@@ -27,9 +27,15 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     
     Route::resource('categories', CategoryController::class);
     Route::resource('menu-items', MenuItemController::class);
+    
+    // Order Management
+    Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'show'])->name('orders.show');
+    Route::patch('/orders/{order}/status', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('orders.update-status');
 });
 
 use App\Http\Controllers\Student\CartController;
+use App\Http\Controllers\Student\OrderController as StudentOrderController;
 
 // Student Routes
 Route::middleware(['auth', 'role:student'])->prefix('student')->name('student.')->group(function () {
@@ -41,6 +47,11 @@ Route::middleware(['auth', 'role:student'])->prefix('student')->name('student.')
     Route::get('/add-to-cart/{id}', [CartController::class, 'add'])->name('cart.add');
     Route::patch('/update-cart', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/remove-from-cart', [CartController::class, 'remove'])->name('cart.remove');
+
+    // Order Routes
+    Route::post('/checkout', [StudentOrderController::class, 'checkout'])->name('checkout');
+    Route::get('/orders', [StudentOrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [StudentOrderController::class, 'show'])->name('orders.show');
 });
 
 Route::middleware('auth')->group(function () {

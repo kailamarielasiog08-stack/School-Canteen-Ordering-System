@@ -59,20 +59,28 @@
                             </table>
                         </div>
 
-                        <div class="mt-10 flex flex-col md:flex-row justify-between items-start md:items-center p-6 bg-gray-50 dark:bg-gray-900 rounded-2xl">
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Total: ${{ number_format($total, 2) }}</h3>
-                                <p class="text-gray-500 text-sm mt-1">Tax and shipping will be calculated at checkout.</p>
+                        <form action="{{ route('student.checkout') }}" method="POST" class="mt-10">
+                            @csrf
+                            <div class="mb-6">
+                                <label for="notes" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Order Notes (Optional)</label>
+                                <textarea name="notes" id="notes" rows="2" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" placeholder="Any special requests?"></textarea>
                             </div>
-                            <div class="mt-6 md:mt-0 flex space-x-4 w-full md:w-auto">
-                                <a href="{{ route('student.menu') }}" class="flex-1 md:flex-none text-center px-6 py-3 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-xl font-bold text-gray-700 dark:text-gray-300 hover:bg-gray-50 transition">
-                                    Back to Menu
-                                </a>
-                                <button class="flex-1 md:flex-none px-10 py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-200 dark:shadow-none hover:bg-indigo-700 transition transform hover:-translate-y-1">
-                                    Checkout
-                                </button>
+
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Total: ${{ number_format($total, 2) }}</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Payment will be made upon pickup.</p>
+                                </div>
+                                <div class="mt-6 md:mt-0 flex space-x-4 w-full md:w-auto">
+                                    <a href="{{ route('student.menu') }}" class="flex-1 md:flex-none text-center px-6 py-3 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-xl font-bold text-gray-700 dark:text-gray-300 hover:bg-gray-50 transition">
+                                        Back to Menu
+                                    </a>
+                                    <button type="submit" class="flex-1 md:flex-none px-10 py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-200 dark:shadow-none hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                                        Place Order
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     @else
                         <div class="text-center py-20">
                             <div class="w-24 h-24 bg-indigo-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">

@@ -30,18 +30,22 @@
             </div>
 
             <!-- Quick Management Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
                 <a href="{{ route('admin.categories.index') }}" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-b-4 border-indigo-500">
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-indigo-600 transition-colors">Manage Categories</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mt-1">Organize your food items by category.</p>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-indigo-600 transition-colors">Categories</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mt-1">Organize food items.</p>
                 </a>
                 <a href="{{ route('admin.menu-items.index') }}" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-b-4 border-emerald-500">
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-emerald-600 transition-colors">Menu Management</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mt-1">Add, edit, or remove food items.</p>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-emerald-600 transition-colors">Menu</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mt-1">Manage food items.</p>
                 </a>
                 <a href="{{ route('admin.students.index') }}" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-b-4 border-amber-500">
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-amber-600 transition-colors">Student Directory</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mt-1">View registered students.</p>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-amber-600 transition-colors">Students</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mt-1">Student directory.</p>
+                </a>
+                <a href="{{ route('admin.orders.index') }}" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-b-4 border-red-500">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-red-600 transition-colors">Orders</h3>
+                    <p class="text-gray-500 dark:text-gray-400 mt-1">Manage incoming orders.</p>
                 </a>
             </div>
         </div>
