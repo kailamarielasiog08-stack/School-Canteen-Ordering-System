@@ -17,15 +17,18 @@
                         </div>
                         <div class="text-right">
                             <h3 class="font-bold">Status</h3>
-                            <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="mt-2">
+                            <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="mt-2 flex flex-col items-end gap-2">
                                 @csrf
                                 @method('PATCH')
-                                <select name="status" onchange="this.form.submit()" class="rounded-md border-gray-300">
+                                <select name="status" class="rounded-md border-gray-300 w-full sm:w-auto">
                                     <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
                                     <option value="preparing" {{ $order->status == 'preparing' ? 'selected' : '' }}>Preparing</option>
                                     <option value="ready" {{ $order->status == 'ready' ? 'selected' : '' }}>Ready</option>
                                     <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Completed</option>
                                 </select>
+                                <button type="submit" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 transition">
+                                    Save Status
+                                </button>
                             </form>
                         </div>
                     </div>
