@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
@@ -8,24 +8,24 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6 text-gray-900 font-medium">
                     {{ __("Welcome, Admin! You can manage the system here.") }}
                 </div>
             </div>
 
             <!-- Stats Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-100">
-                    <div class="text-gray-500">Total Students</div>
-                    <div class="text-2xl font-bold text-gray-900">{{ $totalStudents }}</div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-200">
+                    <div class="text-gray-500 font-medium uppercase text-xs">Total Students</div>
+                    <div class="text-3xl font-bold text-gray-900">{{ $totalStudents }}</div>
                 </div>
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-100">
-                    <div class="text-gray-500">Menu Items</div>
-                    <div class="text-2xl font-bold text-gray-900">{{ $totalMenuItems }}</div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-200">
+                    <div class="text-gray-500 font-medium uppercase text-xs">Menu Items</div>
+                    <div class="text-3xl font-bold text-gray-900">{{ $totalMenuItems }}</div>
                 </div>
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-100">
-                    <div class="text-gray-500">Total Orders</div>
-                    <div class="text-2xl font-bold text-gray-900">{{ $totalOrders }}</div>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-200">
+                    <div class="text-gray-500 font-medium uppercase text-xs">Total Orders</div>
+                    <div class="text-3xl font-bold text-gray-900">{{ $totalOrders }}</div>
                 </div>
             </div>
 
