@@ -12,9 +12,29 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="url('/')" :active="request()->is('/')">
+                        {{ __('Home') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if(auth()->user()->role === 'student')
+                        <x-nav-link :href="route('student.menu')" :active="request()->routeIs('student.menu')">
+                            {{ __('Menu') }}
+                        </x-nav-link>
+                        
+                        <x-nav-link :href="route('student.cart.index')" :active="request()->routeIs('student.cart.index')" class="flex items-center">
+                            {{ __('Cart') }}
+                            @php $cartCount = count(session('cart', [])); @endphp
+                            @if($cartCount > 0)
+                                <span class="ms-1 px-2 py-0.5 text-xs font-bold bg-indigo-600 text-white rounded-full">
+                                    {{ $cartCount }}
+                                </span>
+                            @endif
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -67,9 +87,24 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="url('/')" :active="request()->is('/')">
+                {{ __('Home') }}
+            </x-responsive-nav-link>
+
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            @if(auth()->user()->role === 'student')
+                <x-responsive-nav-link :href="route('student.menu')" :active="request()->routeIs('student.menu')">
+                    {{ __('Menu') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('student.cart.index')" :active="request()->routeIs('student.cart.index')">
+                    @php $cartCount = count(session('cart', [])); @endphp
+                    {{ __('Cart') }} @if($cartCount > 0) ({{ $cartCount }}) @endif
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

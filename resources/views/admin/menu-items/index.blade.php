@@ -47,11 +47,10 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $item->category->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">${{ number_format($item->price, 2) }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        @if($item->is_available)
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Available</span>
-                                        @else
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Out of Stock</span>
-                                        @endif
+                                        <button onclick="toggleAvailability({{ $item->id }}, this)" 
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full transition-colors {{ $item->is_available ? 'bg-green-100 text-green-800 hover:bg-green-200' : 'bg-red-100 text-red-800 hover:bg-red-200' }}">
+                                            {{ $item->is_available ? 'Available' : 'Out of Stock' }}
+                                        </button>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('admin.menu-items.edit', $item) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
@@ -73,4 +72,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleAvailability(id, btn) {
+            fetch(`/admin/menu-items/${id}/toggle`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    if(data.is_available) {
+                        btn.innerText = 'Available';
+                        btn.classList.remove('bg-red-100', 'text-red-800', 'hover:bg-red-200');
+                        btn.classList.add('bg-green-100', 'text-green-800', 'hover:bg-green-200');
+                    } else {
+                        btn.innerText = 'Out of Stock';
+                        btn.classList.remove('bg-green-100', 'text-green-800', 'hover:bg-green-200');
+                        btn.classList.add('bg-red-100', 'text-red-800', 'hover:bg-red-200');
+                    }
+                }
+            });
+        }
+    </script>
 </x-app-layout>
