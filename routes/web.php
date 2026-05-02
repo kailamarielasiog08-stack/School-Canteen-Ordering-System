@@ -29,9 +29,18 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('menu-items', MenuItemController::class);
 });
 
+use App\Http\Controllers\Student\CartController;
+
 // Student Routes
 Route::middleware(['auth', 'role:student'])->prefix('student')->name('student.')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/menu', [StudentDashboardController::class, 'menu'])->name('menu');
+    
+    // Cart Routes
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/add-to-cart/{id}', [CartController::class, 'add'])->name('cart.add');
+    Route::patch('/update-cart', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/remove-from-cart', [CartController::class, 'remove'])->name('cart.remove');
 });
 
 Route::middleware('auth')->group(function () {

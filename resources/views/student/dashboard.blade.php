@@ -15,17 +15,32 @@
 
             <!-- Student Quick Actions -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div class="bg-indigo-600 p-6 rounded-lg shadow-md hover:bg-indigo-700 transition cursor-pointer">
-                    <h3 class="text-white text-lg font-bold">Browse Menu</h3>
-                    <p class="text-indigo-100 mt-1">Explore our delicious categories.</p>
-                </div>
-                <div class="bg-emerald-600 p-6 rounded-lg shadow-md hover:bg-emerald-700 transition cursor-pointer">
-                    <h3 class="text-white text-lg font-bold">My Orders</h3>
-                    <p class="text-emerald-100 mt-1">Track your recent requests.</p>
-                </div>
-                <div class="bg-amber-500 p-6 rounded-lg shadow-md hover:bg-amber-600 transition cursor-pointer">
-                    <h3 class="text-white text-lg font-bold">Account Settings</h3>
-                    <p class="text-amber-100 mt-1">Manage your profile details.</p>
+                <a href="{{ route('student.menu') }}" class="bg-indigo-600 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-white text-xl font-bold">Browse Menu</h3>
+                    <p class="text-indigo-100 mt-1">Explore our delicious food categories.</p>
+                </a>
+                <a href="#" class="bg-emerald-600 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-white text-xl font-bold">My Orders</h3>
+                    <p class="text-emerald-100 mt-1">Track and view your order history.</p>
+                </a>
+                <a href="{{ route('student.cart.index') }}" class="bg-amber-500 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-white text-xl font-bold">My Cart</h3>
+                    <p class="text-amber-100 mt-1">Check out your selected items.</p>
+                </a>
+            </div>
+
+            <!-- Category Highlights -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Explore by Category</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    @forelse($categories as $category)
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 text-center hover:border-indigo-500 transition cursor-pointer">
+                            <h4 class="font-bold text-gray-800 dark:text-white">{{ $category->name }}</h4>
+                            <p class="text-xs text-gray-500 mt-1">{{ $category->menu_items_count ?? $category->menuItems->count() }} Items</p>
+                        </div>
+                    @empty
+                        <p class="text-gray-500 italic">No categories available yet.</p>
+                    @endforelse
                 </div>
             </div>
         </div>
