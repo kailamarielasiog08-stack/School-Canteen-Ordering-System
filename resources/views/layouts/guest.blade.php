@@ -26,5 +26,26 @@
                 {{ $slot }}
             </div>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    showConfirmButton: true,
+                    confirmButtonColor: '#4f46e5'
+                });
+            @endif
+
+            @if(session('status'))
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Status',
+                    text: "{{ session('status') }}",
+                });
+            @endif
+        </script>
     </body>
 </html>

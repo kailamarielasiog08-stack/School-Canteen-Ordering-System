@@ -23,7 +23,7 @@
                             @forelse($orders as $order)
                                 <tr>
                                     <td class="px-6 py-4 text-sm font-medium">#{{ $order->id }}</td>
-                                    <td class="px-6 py-4 text-sm">${{ number_format($order->total_amount, 2) }}</td>
+                                    <td class="px-6 py-4 text-sm">₱{{ number_format($order->total_amount, 2) }}</td>
                                     <td class="px-6 py-4 text-sm uppercase font-bold">{{ $order->status }}</td>
                                     <td class="px-6 py-4 text-sm">{{ $order->created_at->format('M d, Y') }}</td>
                                     <td class="px-6 py-4 text-right">

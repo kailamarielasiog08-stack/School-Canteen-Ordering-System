@@ -95,5 +95,18 @@
         <footer class="bg-white border-t border-gray-200 py-8 text-center text-gray-500 text-sm">
             &copy; {{ date('Y') }} Canteen System. All rights reserved.
         </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    showConfirmButton: true,
+                    confirmButtonColor: '#4f46e5'
+                });
+            @endif
+        </script>
     </body>
 </html>
