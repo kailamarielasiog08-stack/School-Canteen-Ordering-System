@@ -1,47 +1,51 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 font-medium">
                     {{ __("Welcome, Admin! You can manage the system here.") }}
                 </div>
             </div>
 
             <!-- Stats Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Students</h3>
-                    <p class="text-3xl font-bold text-indigo-600 mt-2">{{ $totalStudents }}</p>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-200">
+                    <div class="text-gray-500 font-medium uppercase text-xs">Total Students</div>
+                    <div class="text-3xl font-bold text-gray-900">{{ $totalStudents }}</div>
                 </div>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Menu Items</h3>
-                    <p class="text-3xl font-bold text-emerald-600 mt-2">{{ $totalMenuItems }}</p>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-200">
+                    <div class="text-gray-500 font-medium uppercase text-xs">Menu Items</div>
+                    <div class="text-3xl font-bold text-gray-900">{{ $totalMenuItems }}</div>
                 </div>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Orders</h3>
-                    <p class="text-3xl font-bold text-amber-500 mt-2">{{ $totalOrders }}</p>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border border-gray-200">
+                    <div class="text-gray-500 font-medium uppercase text-xs">Total Orders</div>
+                    <div class="text-3xl font-bold text-gray-900">{{ $totalOrders }}</div>
                 </div>
             </div>
 
-            <!-- Quick Management Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-                <a href="{{ route('admin.categories.index') }}" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-b-4 border-indigo-500">
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-indigo-600 transition-colors">Manage Categories</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mt-1">Organize your food items by category.</p>
+            <!-- Quick Management -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                <a href="{{ route('admin.categories.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 border border-gray-200 transition">
+                    <div class="font-bold text-gray-900">Categories</div>
+                    <div class="text-sm text-gray-600">Manage categories</div>
                 </a>
-                <a href="{{ route('admin.menu-items.index') }}" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-b-4 border-emerald-500">
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-emerald-600 transition-colors">Menu Management</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mt-1">Add, edit, or remove food items.</p>
+                <a href="{{ route('admin.menu-items.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 border border-gray-200 transition">
+                    <div class="font-bold text-gray-900">Menu Items</div>
+                    <div class="text-sm text-gray-600">Manage food menu</div>
                 </a>
-                <a href="{{ route('admin.students.index') }}" class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border-b-4 border-amber-500">
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white group-hover:text-amber-600 transition-colors">Student Directory</h3>
-                    <p class="text-gray-500 dark:text-gray-400 mt-1">View registered students.</p>
+                <a href="{{ route('admin.students.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 border border-gray-200 transition">
+                    <div class="font-bold text-gray-900">Students</div>
+                    <div class="text-sm text-gray-600">View registered students</div>
+                </a>
+                <a href="{{ route('admin.orders.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 border border-gray-200 transition">
+                    <div class="font-bold text-gray-900">Orders</div>
+                    <div class="text-sm text-gray-600">View and track orders</div>
                 </a>
             </div>
         </div>

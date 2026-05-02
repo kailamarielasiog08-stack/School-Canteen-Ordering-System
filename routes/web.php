@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Student\StudentDashboardController;
 
+use App\Models\MenuItem;
+
 Route::get('/', function () {
-    return view('welcome');
+    $menuItems = MenuItem::with('category')->take(6)->get();
+    return view('welcome', compact('menuItems'));
 });
 
 // Role-based Dashboard Redirection
