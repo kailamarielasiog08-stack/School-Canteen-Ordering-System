@@ -78,12 +78,24 @@
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form id="logout-form" method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                Swal.fire({
+                                                    title: 'Log Out?',
+                                                    text: 'Are you sure you want to sign out?',
+                                                    icon: 'question',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#4f46e5',
+                                                    cancelButtonColor: '#d33',
+                                                    confirmButtonText: 'Yes, log out'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        document.getElementById('logout-form').submit();
+                                                    }
+                                                });">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -158,12 +170,24 @@
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form id="responsive-logout-form" method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                                        Swal.fire({
+                                            title: 'Log Out?',
+                                            text: 'Are you sure you want to sign out?',
+                                            icon: 'question',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#4f46e5',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Yes, log out'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                document.getElementById('responsive-logout-form').submit();
+                                            }
+                                        });">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
