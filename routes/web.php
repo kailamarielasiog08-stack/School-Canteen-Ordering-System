@@ -17,9 +17,16 @@ Route::get('/dashboard', function () {
     return redirect()->route('student.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\MenuItemController;
+
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/students', [AdminDashboardController::class, 'students'])->name('students.index');
+    
+    Route::resource('categories', CategoryController::class);
+    Route::resource('menu-items', MenuItemController::class);
 });
 
 // Student Routes
