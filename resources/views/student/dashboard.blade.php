@@ -36,7 +36,7 @@
                     <div class="font-bold text-lg text-indigo-600">Browse Menu</div>
                     <div class="text-sm text-gray-600">Explore food items</div>
                 </a>
-                <a href="#" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 border border-gray-200 transition">
+                <a href="{{ route('student.orders.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 border border-gray-200 transition">
                     <div class="font-bold text-lg text-emerald-600">My Orders</div>
                     <div class="text-sm text-gray-600">Track your orders</div>
                 </a>

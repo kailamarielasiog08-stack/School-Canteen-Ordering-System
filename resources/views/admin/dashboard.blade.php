@@ -48,6 +48,35 @@
                     <div class="text-sm text-gray-600">View and track orders</div>
                 </a>
             </div>
+
+            <!-- Analytics Section -->
+            <div class="mt-10">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Top 3 Most Ordered Items</h3>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total Sold</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            @forelse($topItems as $item)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $item->category->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-right font-bold text-indigo-600">{{ $item->total_sold ?? 0 }} units</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="px-6 py-4 text-center text-gray-500 italic">No sales data available yet.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

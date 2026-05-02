@@ -17,7 +17,11 @@ class AdminDashboardController extends Controller
         $totalMenuItems = MenuItem::count();
         $totalOrders = Order::count(); 
 
-        return view('admin.dashboard', compact('totalStudents', 'totalMenuItems', 'totalOrders'));
+        $topItems = MenuItem::withCount(['orderItems as total_sold' => function($query) {
+            $query->select(\DB::raw('sum(quantity)'));
+        }])->orderByDesc('total_sold')->take(3)->get();
+
+        return view('admin.dashboard', compact('totalStudents', 'totalMenuItems', 'totalOrders', 'topItems'));
     }
 
     public function students()

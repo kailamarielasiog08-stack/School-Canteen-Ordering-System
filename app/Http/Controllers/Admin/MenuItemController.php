@@ -83,4 +83,13 @@ class MenuItemController extends Controller
         $menuItem->delete();
         return redirect()->route('admin.menu-items.index')->with('success', 'Menu Item deleted successfully.');
     }
+
+    public function toggleAvailability(MenuItem $menuItem)
+    {
+        $menuItem->update([
+            'is_available' => !$menuItem->is_available
+        ]);
+
+        return response()->json(['success' => true, 'is_available' => $menuItem->is_available]);
+    }
 }
