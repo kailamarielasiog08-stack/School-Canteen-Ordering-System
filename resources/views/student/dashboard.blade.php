@@ -7,6 +7,23 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if($readyOrders->count() > 0)
+                <div class="mb-6 p-4 bg-indigo-600 text-white rounded-lg shadow-md flex items-center justify-between">
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 me-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <span class="font-bold">Your order is ready!</span>
+                            <p class="text-sm text-indigo-100">Please proceed to the canteen counter to pick up your food.</p>
+                        </div>
+                    </div>
+                    <a href="{{ route('student.orders.index') }}" class="px-4 py-2 bg-white text-indigo-600 rounded-md text-sm font-bold hover:bg-indigo-50 transition">
+                        View Orders
+                    </a>
+                </div>
+            @endif
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 font-medium">
                     {{ __("Welcome back! What would you like to eat today?") }}

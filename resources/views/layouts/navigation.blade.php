@@ -24,6 +24,16 @@
                         <x-nav-link :href="route('student.menu')" :active="request()->routeIs('student.menu')">
                             {{ __('Menu') }}
                         </x-nav-link>
+                        
+                        <x-nav-link :href="route('student.cart.index')" :active="request()->routeIs('student.cart.index')" class="flex items-center">
+                            {{ __('Cart') }}
+                            @php $cartCount = count(session('cart', [])); @endphp
+                            @if($cartCount > 0)
+                                <span class="ms-1 px-2 py-0.5 text-xs font-bold bg-indigo-600 text-white rounded-full">
+                                    {{ $cartCount }}
+                                </span>
+                            @endif
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -88,6 +98,11 @@
             @if(auth()->user()->role === 'student')
                 <x-responsive-nav-link :href="route('student.menu')" :active="request()->routeIs('student.menu')">
                     {{ __('Menu') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('student.cart.index')" :active="request()->routeIs('student.cart.index')">
+                    @php $cartCount = count(session('cart', [])); @endphp
+                    {{ __('Cart') }} @if($cartCount > 0) ({{ $cartCount }}) @endif
                 </x-responsive-nav-link>
             @endif
         </div>
