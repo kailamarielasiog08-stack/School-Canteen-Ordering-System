@@ -40,11 +40,7 @@
                 </div>
             </div>
 
-            @if(session('success'))
-                <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-sm">
-                    {{ session('success') }}
-                </div>
-            @endif
+
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @forelse($menuItems as $item)

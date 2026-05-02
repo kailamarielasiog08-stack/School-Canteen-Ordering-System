@@ -16,13 +16,17 @@
                         {{ __('Home') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard', 'admin.dashboard', 'student.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
                     @if(auth()->user()->role === 'student')
                         <x-nav-link :href="route('student.menu')" :active="request()->routeIs('student.menu')">
                             {{ __('Menu') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('student.orders.index')" :active="request()->routeIs('student.orders.*')">
+                            {{ __('My Orders') }}
                         </x-nav-link>
                         
                         <x-nav-link :href="route('student.cart.index')" :active="request()->routeIs('student.cart.index')" class="flex items-center">
@@ -33,6 +37,21 @@
                                     {{ $cartCount }}
                                 </span>
                             @endif
+                        </x-nav-link>
+                    @endif
+
+                    @if(auth()->user()->role === 'admin')
+                        <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
+                            {{ __('Categories') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.menu-items.index')" :active="request()->routeIs('admin.menu-items.*')">
+                            {{ __('Menu Items') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.*')">
+                            {{ __('Orders') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.*')">
+                            {{ __('Students') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -91,7 +110,7 @@
                 {{ __('Home') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard', 'admin.dashboard', 'student.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
@@ -100,9 +119,28 @@
                     {{ __('Menu') }}
                 </x-responsive-nav-link>
 
+                <x-responsive-nav-link :href="route('student.orders.index')" :active="request()->routeIs('student.orders.*')">
+                    {{ __('My Orders') }}
+                </x-responsive-nav-link>
+
                 <x-responsive-nav-link :href="route('student.cart.index')" :active="request()->routeIs('student.cart.index')">
                     @php $cartCount = count(session('cart', [])); @endphp
                     {{ __('Cart') }} @if($cartCount > 0) ({{ $cartCount }}) @endif
+                </x-responsive-nav-link>
+            @endif
+
+            @if(auth()->user()->role === 'admin')
+                <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
+                    {{ __('Categories') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.menu-items.index')" :active="request()->routeIs('admin.menu-items.*')">
+                    {{ __('Menu Items') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.*')">
+                    {{ __('Orders') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.*')">
+                    {{ __('Students') }}
                 </x-responsive-nav-link>
             @endif
         </div>

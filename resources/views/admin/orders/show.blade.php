@@ -36,12 +36,12 @@
                             @foreach($order->items as $item)
                                 <tr>
                                     <td class="py-2">{{ $item->menuItem->name }} x {{ $item->quantity }}</td>
-                                    <td class="py-2 text-right">${{ number_format($item->price * $item->quantity, 2) }}</td>
+                                    <td class="py-2 text-right">₱{{ number_format($item->price * $item->quantity, 2) }}</td>
                                 </tr>
                             @endforeach
                             <tr class="border-t font-bold">
                                 <td class="py-2">Total</td>
-                                <td class="py-2 text-right">${{ number_format($order->total_amount, 2) }}</td>
+                                <td class="py-2 text-right">₱{{ number_format($order->total_amount, 2) }}</td>
                             </tr>
                         </table>
                     </div>
