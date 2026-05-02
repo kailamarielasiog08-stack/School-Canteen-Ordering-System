@@ -26,14 +26,8 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#{{ $order->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $order->user->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">${{ number_format($order->total_amount, 2) }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                            @if($order->status == 'pending') bg-yellow-100 text-yellow-800 
-                                            @elseif($order->status == 'preparing') bg-blue-100 text-blue-800 
-                                            @elseif($order->status == 'ready') bg-purple-100 text-purple-800 
-                                            @else bg-green-100 text-green-800 @endif">
-                                            {{ ucfirst($order->status) }}
-                                        </span>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold uppercase">
+                                        {{ $order->status }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $order->created_at->format('M d, H:i') }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
